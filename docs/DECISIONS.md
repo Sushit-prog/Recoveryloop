@@ -64,3 +64,10 @@ using the event's timestamp is what keeps the function deterministic and
 testable. This is an M1 generation artifact of back-dated events, not a rule
 disagreement; the dataset label for that one case is the side being corrected
 in spirit (no dataset edit made — the disagreement is documented instead).
+
+### 6. quiet_hours narrowed from {retry_now, escalate} to retry_now only
+
+quiet_hours was initially specified to also block escalate, but escalate means
+queuing for human review (no customer contact), so the quiet-hours restriction
+was narrowed to retry_now only after the M4 end-to-end run showed 7/60 cases —
+all escalations — being incorrectly denied overnight.

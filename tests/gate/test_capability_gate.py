@@ -104,10 +104,12 @@ def test_rule_4_quiet_hours_blocks_retry_now() -> None:
     _assert_denied(decision, "quiet_hours", "23")
 
 
-def test_rule_4_quiet_hours_blocks_escalate() -> None:
+def test_rule_4_quiet_hours_does_not_block_escalate() -> None:
     event = _mk_event(timestamp=datetime(2026, 8, 30, 2, 30, tzinfo=UTC))
     decision = authorize(event, _mk_diag(), _mk_action(ActionType.escalate))
-    _assert_denied(decision, "quiet_hours", "2")
+    assert decision.authorized is True
+    assert decision.policy_rule_triggered is None
+    assert decision.denial_reason is None
 
 
 def test_rule_4_quiet_hours_boundary_22_denied_7_allowed() -> None:

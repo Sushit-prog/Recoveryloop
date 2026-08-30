@@ -9,7 +9,6 @@ from recoveryloop.schema import (
 )
 
 _RETRY_ACTIONS = (ActionType.retry_now, ActionType.retry_later)
-_CONTACT_ACTIONS = (ActionType.retry_now, ActionType.escalate)
 
 
 def authorize(
@@ -69,10 +68,13 @@ def authorize(
             "customer-facing or retry action blocked",
         )
 
-    if action in _CONTACT_ACTIONS and (
+    if action == ActionType.retry_now and (
         event.timestamp.hour >= 22 or event.timestamp.hour < 7
     ):
         # Rule 4 — do not contact customers during quiet hours (22:00-07:00 UTC).
+        # Only retry_now (immediate customer-facing/automated contact) is gated:
+        # escalate queues for human review with no customer-facing effect
+        # regardless of the hour.
         return _deny(
             "quiet_hours",
             f"quiet hours: event hour {event.timestamp.hour} UTC is within 22:00-07:00",
