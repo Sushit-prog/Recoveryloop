@@ -1,0 +1,1322 @@
+[
+  {
+    "event": {
+      "case_id": "C-001",
+      "merchant_id": "mer_gamma",
+      "amount": "25000.50",
+      "currency": "INR",
+      "failure_code": "insufficient_funds",
+      "timestamp": "2026-08-30T20:31:42+00:00",
+      "retry_count": 4,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-001",
+      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_is_retryable": true,
+      "expected_action": "escalate",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-002",
+      "merchant_id": "mer_beta",
+      "amount": "7999.00",
+      "currency": "INR",
+      "failure_code": "expired_card",
+      "timestamp": "2026-08-14T20:14:00+00:00",
+      "retry_count": 3,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-002",
+      "expected_root_cause": "card expired before charge was attempted",
+      "expected_is_retryable": false,
+      "expected_action": "escalate",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-003",
+      "merchant_id": "mer_epsilon",
+      "amount": "49.99",
+      "currency": "USD",
+      "failure_code": "limit_drop",
+      "timestamp": "2026-08-04T15:28:00+00:00",
+      "retry_count": 1,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-003",
+      "expected_root_cause": "transaction exceeds the current card limit",
+      "expected_is_retryable": true,
+      "expected_action": "retry_later",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-004",
+      "merchant_id": "mer_gamma",
+      "amount": "385000.50",
+      "currency": "INR",
+      "failure_code": "insufficient_funds",
+      "timestamp": "2026-08-02T00:28:00+00:00",
+      "retry_count": 1,
+      "has_active_ptp": true,
+      "ptp_date": "2026-09-01"
+    },
+    "ground_truth": {
+      "case_id": "C-004",
+      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_is_retryable": true,
+      "expected_action": "no_action",
+      "expected_authorized": false,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-005",
+      "merchant_id": "mer_gamma",
+      "amount": "199000.00",
+      "currency": "INR",
+      "failure_code": "insufficient_funds",
+      "timestamp": "2026-08-04T15:26:00+00:00",
+      "retry_count": 1,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-005",
+      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_is_retryable": true,
+      "expected_action": "retry_now",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-006",
+      "merchant_id": "mer_alpha",
+      "amount": "499.00",
+      "currency": "INR",
+      "failure_code": "unknown",
+      "timestamp": "2026-08-09T10:29:00+00:00",
+      "retry_count": 0,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-006",
+      "expected_root_cause": "failure code could not be classified",
+      "expected_is_retryable": false,
+      "expected_action": "no_action",
+      "expected_authorized": false,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-007",
+      "merchant_id": "mer_alpha",
+      "amount": "499.00",
+      "currency": "INR",
+      "failure_code": "unknown",
+      "timestamp": "2026-08-17T11:45:00+00:00",
+      "retry_count": 1,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-007",
+      "expected_root_cause": "failure code could not be classified",
+      "expected_is_retryable": false,
+      "expected_action": "no_action",
+      "expected_authorized": false,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-008",
+      "merchant_id": "mer_beta",
+      "amount": "0.00",
+      "currency": "INR",
+      "failure_code": "insufficient_funds",
+      "timestamp": "2026-08-30T18:34:55+00:00",
+      "retry_count": 0,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-008",
+      "expected_root_cause": "zero-amount transaction; nothing to recover",
+      "expected_is_retryable": false,
+      "expected_action": "no_action",
+      "expected_authorized": false,
+      "is_adversarial": true,
+      "adversarial_reason": "zero-amount case is not recoverable"
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-009",
+      "merchant_id": "mer_delta",
+      "amount": "199000.00",
+      "currency": "INR",
+      "failure_code": "gateway_error",
+      "timestamp": "2026-08-02T18:12:00+00:00",
+      "retry_count": 4,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-009",
+      "expected_root_cause": "payment gateway raised a processing error",
+      "expected_is_retryable": true,
+      "expected_action": "no_action",
+      "expected_authorized": false,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-010",
+      "merchant_id": "mer_beta",
+      "amount": "89.00",
+      "currency": "USD",
+      "failure_code": "expired_card",
+      "timestamp": "2026-08-23T23:30:00+00:00",
+      "retry_count": 3,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-010",
+      "expected_root_cause": "card expired before charge was attempted",
+      "expected_is_retryable": false,
+      "expected_action": "escalate",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-011",
+      "merchant_id": "mer_gamma",
+      "amount": "2500.75",
+      "currency": "INR",
+      "failure_code": "bank_timeout",
+      "timestamp": "2026-08-12T01:33:00+00:00",
+      "retry_count": 2,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-011",
+      "expected_root_cause": "issuing bank did not respond within the window",
+      "expected_is_retryable": true,
+      "expected_action": "retry_later",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-012",
+      "merchant_id": "mer_epsilon",
+      "amount": "2500.75",
+      "currency": "INR",
+      "failure_code": "bank_timeout",
+      "timestamp": "2026-08-03T21:16:00+00:00",
+      "retry_count": 2,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-012",
+      "expected_root_cause": "issuing bank did not respond within the window",
+      "expected_is_retryable": true,
+      "expected_action": "retry_later",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-013",
+      "merchant_id": "mer_gamma",
+      "amount": "12999.50",
+      "currency": "INR",
+      "failure_code": "expired_card",
+      "timestamp": "2026-08-15T23:19:00+00:00",
+      "retry_count": 3,
+      "has_active_ptp": true,
+      "ptp_date": "2026-09-04"
+    },
+    "ground_truth": {
+      "case_id": "C-013",
+      "expected_root_cause": "card expired before charge was attempted",
+      "expected_is_retryable": false,
+      "expected_action": "no_action",
+      "expected_authorized": false,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-014",
+      "merchant_id": "mer_delta",
+      "amount": "1099.50",
+      "currency": "INR",
+      "failure_code": "bank_timeout",
+      "timestamp": "2026-08-25T13:46:00+00:00",
+      "retry_count": 0,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-014",
+      "expected_root_cause": "issuing bank did not respond within the window",
+      "expected_is_retryable": true,
+      "expected_action": "retry_later",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-015",
+      "merchant_id": "mer_gamma",
+      "amount": "2500.75",
+      "currency": "INR",
+      "failure_code": "unknown",
+      "timestamp": "2026-08-28T02:25:00+00:00",
+      "retry_count": 4,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-015",
+      "expected_root_cause": "failure code could not be classified",
+      "expected_is_retryable": false,
+      "expected_action": "no_action",
+      "expected_authorized": false,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-016",
+      "merchant_id": "mer_epsilon",
+      "amount": "1249999.00",
+      "currency": "INR",
+      "failure_code": "expired_card",
+      "timestamp": "2026-08-21T20:56:00+00:00",
+      "retry_count": 0,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-016",
+      "expected_root_cause": "card expired before charge was attempted",
+      "expected_is_retryable": false,
+      "expected_action": "escalate",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-017",
+      "merchant_id": "mer_alpha",
+      "amount": "49.99",
+      "currency": "USD",
+      "failure_code": "expired_card",
+      "timestamp": "2026-08-21T18:03:00+00:00",
+      "retry_count": 0,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-017",
+      "expected_root_cause": "card expired before charge was attempted",
+      "expected_is_retryable": false,
+      "expected_action": "escalate",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-018",
+      "merchant_id": "mer_gamma",
+      "amount": "2500.75",
+      "currency": "INR",
+      "failure_code": "insufficient_funds",
+      "timestamp": "2026-08-30T20:41:28+00:00",
+      "retry_count": 0,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-018",
+      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_is_retryable": true,
+      "expected_action": "retry_now",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-019",
+      "merchant_id": "mer_gamma",
+      "amount": "199000.00",
+      "currency": "INR",
+      "failure_code": "limit_drop",
+      "timestamp": "2026-08-07T05:47:00+00:00",
+      "retry_count": 2,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-019",
+      "expected_root_cause": "transaction exceeds the current card limit",
+      "expected_is_retryable": true,
+      "expected_action": "retry_later",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-020",
+      "merchant_id": "mer_beta",
+      "amount": "84500.00",
+      "currency": "INR",
+      "failure_code": "bank_timeout",
+      "timestamp": "2026-08-05T02:24:00+00:00",
+      "retry_count": 55,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-020",
+      "expected_root_cause": "issuing bank did not respond within the window",
+      "expected_is_retryable": true,
+      "expected_action": "no_action",
+      "expected_authorized": false,
+      "is_adversarial": true,
+      "adversarial_reason": "absurd retry count means the budget is blown; never retry again"
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-021",
+      "merchant_id": "mer_beta",
+      "amount": "25000.50",
+      "currency": "INR",
+      "failure_code": "gateway_error",
+      "timestamp": "2026-08-03T05:09:00+00:00",
+      "retry_count": 1,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-021",
+      "expected_root_cause": "payment gateway raised a processing error",
+      "expected_is_retryable": true,
+      "expected_action": "retry_later",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-022",
+      "merchant_id": "mer_beta",
+      "amount": "25000.50",
+      "currency": "INR",
+      "failure_code": "insufficient_funds",
+      "timestamp": "2026-08-25T17:18:00+00:00",
+      "retry_count": 1,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-022",
+      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_is_retryable": true,
+      "expected_action": "retry_now",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-023",
+      "merchant_id": "mer_gamma",
+      "amount": "499.00",
+      "currency": "INR",
+      "failure_code": "bank_timeout",
+      "timestamp": "2026-08-15T07:31:00+00:00",
+      "retry_count": 5,
+      "has_active_ptp": true,
+      "ptp_date": "2026-09-05"
+    },
+    "ground_truth": {
+      "case_id": "C-023",
+      "expected_root_cause": "issuing bank did not respond within the window",
+      "expected_is_retryable": true,
+      "expected_action": "no_action",
+      "expected_authorized": false,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-024",
+      "merchant_id": "mer_alpha",
+      "amount": "12999.50",
+      "currency": "INR",
+      "failure_code": "expired_card",
+      "timestamp": "2026-08-27T08:14:00+00:00",
+      "retry_count": 2,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-024",
+      "expected_root_cause": "card expired before charge was attempted",
+      "expected_is_retryable": false,
+      "expected_action": "escalate",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-025",
+      "merchant_id": "mer_alpha",
+      "amount": "1499.99",
+      "currency": "USD",
+      "failure_code": "bank_timeout",
+      "timestamp": "2026-08-21T14:48:00+00:00",
+      "retry_count": 0,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-025",
+      "expected_root_cause": "issuing bank did not respond within the window",
+      "expected_is_retryable": true,
+      "expected_action": "retry_later",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-026",
+      "merchant_id": "mer_beta",
+      "amount": "84500.00",
+      "currency": "INR",
+      "failure_code": "gateway_error",
+      "timestamp": "2026-08-15T15:43:00+00:00",
+      "retry_count": 0,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-026",
+      "expected_root_cause": "payment gateway raised a processing error",
+      "expected_is_retryable": true,
+      "expected_action": "retry_later",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-027",
+      "merchant_id": "mer_beta",
+      "amount": "199000.00",
+      "currency": "INR",
+      "failure_code": "expired_card",
+      "timestamp": "2026-08-01T18:32:00+00:00",
+      "retry_count": 1,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-027",
+      "expected_root_cause": "card expired before charge was attempted",
+      "expected_is_retryable": false,
+      "expected_action": "escalate",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-028",
+      "merchant_id": "mer_alpha",
+      "amount": "499.00",
+      "currency": "INR",
+      "failure_code": "expired_card",
+      "timestamp": "2026-08-27T00:26:00+00:00",
+      "retry_count": 1,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-028",
+      "expected_root_cause": "card expired before charge was attempted",
+      "expected_is_retryable": false,
+      "expected_action": "escalate",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-029",
+      "merchant_id": "mer_alpha",
+      "amount": "25000.50",
+      "currency": "INR",
+      "failure_code": "limit_drop",
+      "timestamp": "2026-08-04T13:50:00+00:00",
+      "retry_count": 2,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-029",
+      "expected_root_cause": "transaction exceeds the current card limit",
+      "expected_is_retryable": true,
+      "expected_action": "retry_later",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-030",
+      "merchant_id": "mer_delta",
+      "amount": "25000.50",
+      "currency": "INR",
+      "failure_code": "insufficient_funds",
+      "timestamp": "2026-08-13T14:05:00+00:00",
+      "retry_count": 3,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-030",
+      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_is_retryable": true,
+      "expected_action": "escalate",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-031",
+      "merchant_id": "mer_alpha",
+      "amount": "25000.50",
+      "currency": "INR",
+      "failure_code": "unknown",
+      "timestamp": "2026-08-23T09:00:00+00:00",
+      "retry_count": 5,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-031",
+      "expected_root_cause": "failure code could not be classified",
+      "expected_is_retryable": false,
+      "expected_action": "no_action",
+      "expected_authorized": false,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-032",
+      "merchant_id": "mer_gamma",
+      "amount": "1499.99",
+      "currency": "USD",
+      "failure_code": "unknown",
+      "timestamp": "2026-08-03T06:42:00+00:00",
+      "retry_count": 6,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-032",
+      "expected_root_cause": "failure code could not be classified",
+      "expected_is_retryable": false,
+      "expected_action": "no_action",
+      "expected_authorized": false,
+      "is_adversarial": true,
+      "adversarial_reason": "unknown failure code compounded by exhausted retries"
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-033",
+      "merchant_id": "mer_epsilon",
+      "amount": "1499.00",
+      "currency": "INR",
+      "failure_code": "insufficient_funds",
+      "timestamp": "2026-08-06T22:29:00+00:00",
+      "retry_count": 1,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-033",
+      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_is_retryable": true,
+      "expected_action": "retry_now",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-034",
+      "merchant_id": "mer_beta",
+      "amount": "385000.50",
+      "currency": "INR",
+      "failure_code": "limit_drop",
+      "timestamp": "2026-08-19T14:57:00+00:00",
+      "retry_count": 5,
+      "has_active_ptp": true,
+      "ptp_date": "2026-09-04"
+    },
+    "ground_truth": {
+      "case_id": "C-034",
+      "expected_root_cause": "transaction exceeds the current card limit",
+      "expected_is_retryable": true,
+      "expected_action": "no_action",
+      "expected_authorized": false,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-035",
+      "merchant_id": "mer_alpha",
+      "amount": "499.00",
+      "currency": "INR",
+      "failure_code": "unknown",
+      "timestamp": "2026-08-30T19:39:57+00:00",
+      "retry_count": 5,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-035",
+      "expected_root_cause": "failure code could not be classified",
+      "expected_is_retryable": false,
+      "expected_action": "no_action",
+      "expected_authorized": false,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-036",
+      "merchant_id": "mer_epsilon",
+      "amount": "199000.00",
+      "currency": "INR",
+      "failure_code": "gateway_error",
+      "timestamp": "2026-08-30T18:57:28+00:00",
+      "retry_count": 0,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-036",
+      "expected_root_cause": "payment gateway raised a processing error",
+      "expected_is_retryable": true,
+      "expected_action": "retry_later",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-037",
+      "merchant_id": "mer_beta",
+      "amount": "1499.00",
+      "currency": "INR",
+      "failure_code": "bank_timeout",
+      "timestamp": "2026-08-27T04:55:00+00:00",
+      "retry_count": 1,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-037",
+      "expected_root_cause": "issuing bank did not respond within the window",
+      "expected_is_retryable": true,
+      "expected_action": "retry_later",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-038",
+      "merchant_id": "mer_alpha",
+      "amount": "2500.75",
+      "currency": "INR",
+      "failure_code": "limit_drop",
+      "timestamp": "2026-08-09T18:17:00+00:00",
+      "retry_count": 3,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-038",
+      "expected_root_cause": "transaction exceeds the current card limit",
+      "expected_is_retryable": true,
+      "expected_action": "escalate",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-039",
+      "merchant_id": "mer_delta",
+      "amount": "385000.50",
+      "currency": "INR",
+      "failure_code": "gateway_error",
+      "timestamp": "2026-08-25T02:45:00+00:00",
+      "retry_count": 3,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-039",
+      "expected_root_cause": "payment gateway raised a processing error",
+      "expected_is_retryable": true,
+      "expected_action": "no_action",
+      "expected_authorized": false,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-040",
+      "merchant_id": "mer_epsilon",
+      "amount": "25000.50",
+      "currency": "INR",
+      "failure_code": "expired_card",
+      "timestamp": "2026-08-27T01:55:00+00:00",
+      "retry_count": 3,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-040",
+      "expected_root_cause": "card expired before charge was attempted",
+      "expected_is_retryable": false,
+      "expected_action": "escalate",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-041",
+      "merchant_id": "mer_epsilon",
+      "amount": "250.50",
+      "currency": "USD",
+      "failure_code": "unknown",
+      "timestamp": "2026-08-10T04:40:00+00:00",
+      "retry_count": 3,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-041",
+      "expected_root_cause": "failure code could not be classified",
+      "expected_is_retryable": false,
+      "expected_action": "no_action",
+      "expected_authorized": false,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-042",
+      "merchant_id": "mer_beta",
+      "amount": "2500.75",
+      "currency": "INR",
+      "failure_code": "insufficient_funds",
+      "timestamp": "2026-08-06T22:40:00+00:00",
+      "retry_count": 4,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-042",
+      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_is_retryable": true,
+      "expected_action": "escalate",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-043",
+      "merchant_id": "mer_gamma",
+      "amount": "1249999.00",
+      "currency": "INR",
+      "failure_code": "expired_card",
+      "timestamp": "2026-08-16T16:18:00+00:00",
+      "retry_count": 1,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-043",
+      "expected_root_cause": "card expired before charge was attempted",
+      "expected_is_retryable": false,
+      "expected_action": "escalate",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-044",
+      "merchant_id": "mer_gamma",
+      "amount": "1099.50",
+      "currency": "INR",
+      "failure_code": "insufficient_funds",
+      "timestamp": "2026-08-30T19:02:40+00:00",
+      "retry_count": 0,
+      "has_active_ptp": true,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-044",
+      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_is_retryable": true,
+      "expected_action": "retry_later",
+      "expected_authorized": true,
+      "is_adversarial": true,
+      "adversarial_reason": "active PTP without a date is ambiguous; do not assume it blocks recovery"
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-045",
+      "merchant_id": "mer_alpha",
+      "amount": "1099.50",
+      "currency": "INR",
+      "failure_code": "gateway_error",
+      "timestamp": "2026-08-14T01:24:00+00:00",
+      "retry_count": 0,
+      "has_active_ptp": true,
+      "ptp_date": "2026-09-04"
+    },
+    "ground_truth": {
+      "case_id": "C-045",
+      "expected_root_cause": "payment gateway raised a processing error",
+      "expected_is_retryable": true,
+      "expected_action": "no_action",
+      "expected_authorized": false,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-046",
+      "merchant_id": "mer_beta",
+      "amount": "12999.50",
+      "currency": "INR",
+      "failure_code": "bank_timeout",
+      "timestamp": "2026-08-12T12:52:00+00:00",
+      "retry_count": 0,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-046",
+      "expected_root_cause": "issuing bank did not respond within the window",
+      "expected_is_retryable": true,
+      "expected_action": "retry_later",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-047",
+      "merchant_id": "mer_alpha",
+      "amount": "7999.00",
+      "currency": "INR",
+      "failure_code": "expired_card",
+      "timestamp": "2026-08-30T19:57:37+00:00",
+      "retry_count": 1,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-047",
+      "expected_root_cause": "card expired before charge was attempted",
+      "expected_is_retryable": false,
+      "expected_action": "escalate",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-048",
+      "merchant_id": "mer_beta",
+      "amount": "7999.00",
+      "currency": "INR",
+      "failure_code": "limit_drop",
+      "timestamp": "2026-08-14T03:15:00+00:00",
+      "retry_count": 1,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-048",
+      "expected_root_cause": "transaction exceeds the current card limit",
+      "expected_is_retryable": true,
+      "expected_action": "retry_later",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-049",
+      "merchant_id": "mer_epsilon",
+      "amount": "499.00",
+      "currency": "INR",
+      "failure_code": "insufficient_funds",
+      "timestamp": "2026-08-30T18:12:27+00:00",
+      "retry_count": 0,
+      "has_active_ptp": true,
+      "ptp_date": "2026-08-21"
+    },
+    "ground_truth": {
+      "case_id": "C-049",
+      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_is_retryable": true,
+      "expected_action": "retry_now",
+      "expected_authorized": true,
+      "is_adversarial": true,
+      "adversarial_reason": "stale promise-to-pay date should not block recovery"
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-050",
+      "merchant_id": "mer_gamma",
+      "amount": "89.00",
+      "currency": "USD",
+      "failure_code": "insufficient_funds",
+      "timestamp": "2026-08-07T17:04:00+00:00",
+      "retry_count": 0,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-050",
+      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_is_retryable": true,
+      "expected_action": "retry_now",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-051",
+      "merchant_id": "mer_gamma",
+      "amount": "199000.00",
+      "currency": "INR",
+      "failure_code": "bank_timeout",
+      "timestamp": "2026-08-25T17:13:00+00:00",
+      "retry_count": 0,
+      "has_active_ptp": true,
+      "ptp_date": "2026-08-27"
+    },
+    "ground_truth": {
+      "case_id": "C-051",
+      "expected_root_cause": "issuing bank did not respond within the window",
+      "expected_is_retryable": true,
+      "expected_action": "retry_later",
+      "expected_authorized": true,
+      "is_adversarial": true,
+      "adversarial_reason": "stale promise-to-pay date should not block recovery"
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-052",
+      "merchant_id": "mer_gamma",
+      "amount": "12999.50",
+      "currency": "INR",
+      "failure_code": "bank_timeout",
+      "timestamp": "2026-08-19T01:47:00+00:00",
+      "retry_count": 1,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-052",
+      "expected_root_cause": "issuing bank did not respond within the window",
+      "expected_is_retryable": true,
+      "expected_action": "retry_later",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-053",
+      "merchant_id": "mer_beta",
+      "amount": "7999.00",
+      "currency": "INR",
+      "failure_code": "insufficient_funds",
+      "timestamp": "2026-08-07T00:06:00+00:00",
+      "retry_count": 1,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-053",
+      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_is_retryable": true,
+      "expected_action": "retry_now",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-054",
+      "merchant_id": "mer_epsilon",
+      "amount": "499.00",
+      "currency": "INR",
+      "failure_code": "limit_drop",
+      "timestamp": "2026-08-13T12:03:00+00:00",
+      "retry_count": 3,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-054",
+      "expected_root_cause": "transaction exceeds the current card limit",
+      "expected_is_retryable": true,
+      "expected_action": "escalate",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-055",
+      "merchant_id": "mer_alpha",
+      "amount": "7999.00",
+      "currency": "INR",
+      "failure_code": "bank_timeout",
+      "timestamp": "2026-08-08T07:07:00+00:00",
+      "retry_count": 2,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-055",
+      "expected_root_cause": "issuing bank did not respond within the window",
+      "expected_is_retryable": true,
+      "expected_action": "retry_later",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-056",
+      "merchant_id": "mer_alpha",
+      "amount": "1499.00",
+      "currency": "INR",
+      "failure_code": "insufficient_funds",
+      "timestamp": "2026-08-30T20:59:39+00:00",
+      "retry_count": 5,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-056",
+      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_is_retryable": true,
+      "expected_action": "escalate",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-057",
+      "merchant_id": "mer_gamma",
+      "amount": "84500.00",
+      "currency": "INR",
+      "failure_code": "limit_drop",
+      "timestamp": "2026-08-30T20:18:13+00:00",
+      "retry_count": 0,
+      "has_active_ptp": true,
+      "ptp_date": "2026-08-21"
+    },
+    "ground_truth": {
+      "case_id": "C-057",
+      "expected_root_cause": "transaction exceeds the current card limit",
+      "expected_is_retryable": true,
+      "expected_action": "retry_later",
+      "expected_authorized": true,
+      "is_adversarial": true,
+      "adversarial_reason": "stale promise-to-pay date should not block recovery"
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-058",
+      "merchant_id": "mer_delta",
+      "amount": "1099.50",
+      "currency": "INR",
+      "failure_code": "expired_card",
+      "timestamp": "2026-08-11T20:53:00+00:00",
+      "retry_count": 0,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-058",
+      "expected_root_cause": "card expired before charge was attempted",
+      "expected_is_retryable": false,
+      "expected_action": "escalate",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-059",
+      "merchant_id": "mer_beta",
+      "amount": "250.50",
+      "currency": "USD",
+      "failure_code": "gateway_error",
+      "timestamp": "2026-08-11T19:07:00+00:00",
+      "retry_count": 2,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-059",
+      "expected_root_cause": "payment gateway raised a processing error",
+      "expected_is_retryable": true,
+      "expected_action": "retry_later",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  },
+  {
+    "event": {
+      "case_id": "C-060",
+      "merchant_id": "mer_epsilon",
+      "amount": "1499.00",
+      "currency": "INR",
+      "failure_code": "bank_timeout",
+      "timestamp": "2026-08-11T16:33:00+00:00",
+      "retry_count": 0,
+      "has_active_ptp": false,
+      "ptp_date": null
+    },
+    "ground_truth": {
+      "case_id": "C-060",
+      "expected_root_cause": "issuing bank did not respond within the window",
+      "expected_is_retryable": true,
+      "expected_action": "retry_later",
+      "expected_authorized": true,
+      "is_adversarial": false,
+      "adversarial_reason": null
+    }
+  }
+]

@@ -92,6 +92,24 @@ class AuditRecord(BaseModel):
     timestamp: datetime
 ```
 
+## Evaluation-Only Metadata
+
+The model below is NOT part of the live pipeline schema — components never
+exchange it, and the pipeline never emits it. It exists solely so the eval
+harness (M7) has a ground truth to score Diagnoser/DecisionEngine/Gate
+outputs against. It is produced by the synthetic dataset generator in M1.
+
+```python
+class GroundTruthLabel(BaseModel):
+    case_id: str
+    expected_root_cause: str
+    expected_is_retryable: bool
+    expected_action: ActionType
+    expected_authorized: bool
+    is_adversarial: bool = False
+    adversarial_reason: Optional[str] = None
+```
+
 ## Field-Contract Notes
 
 - **`amount`** is a `Decimal` denominated in `currency`; both must be present
