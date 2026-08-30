@@ -122,16 +122,17 @@ def _unblocked_candidates(event: FailureEvent, diagnosis: Diagnosis) -> RuleCand
     if n <= 2:
         return [
             (
-                ActionType.retry_now,
-                0.75,
+                ActionType.retry_later,
+                0.7,
                 f"retryable cause ({diagnosis.root_cause}) with {n} prior attempts; "
-                "still fresh enough to try immediately",
+                "after one or more failures on a transient condition, a brief backoff "
+                "before retrying is more defensible than an immediate re-attempt",
             ),
             (
-                ActionType.retry_later,
+                ActionType.retry_now,
                 0.5,
                 f"retryable cause ({diagnosis.root_cause}) with {n} prior attempts; "
-                "hedge with a later retry if the immediate one fails",
+                "an immediate attempt remains plausible if the backoff is skipped",
             ),
         ]
     return [

@@ -99,8 +99,8 @@ def test_rule_4_stale_ptp_falls_through_with_note() -> None:
     )
     diag = _mk_diag("bank/network timeout during authorization", True)
     result = decide(event, diag)
-    assert result[0].action_type == ActionType.retry_now
-    assert result[0].score == pytest.approx(0.75)
+    assert result[0].action_type == ActionType.retry_later
+    assert result[0].score == pytest.approx(0.7)
     assert "2026-08-20" in result[0].reasoning
     assert "proceeding with recovery" in result[0].reasoning
 
@@ -129,10 +129,12 @@ def test_rule_6_retry_count_low() -> None:
     event = _mk_event(FailureCode.bank_timeout, retry_count=2)
     diag = _mk_diag("bank/network timeout during authorization", True)
     result = decide(event, diag)
-    assert result[0].action_type == ActionType.retry_now
-    assert result[0].score == pytest.approx(0.75)
+    assert result[0].action_type == ActionType.retry_later
+    assert result[0].score == pytest.approx(0.7)
     assert "2 prior attempts" in result[0].reasoning
-    assert result[1].action_type == ActionType.retry_later
+    assert result[0].reasoning.count("backoff") >= 1
+    assert result[1].action_type == ActionType.retry_now
+    assert result[1].score == pytest.approx(0.5)
 
 
 def test_rule_6_retry_count_high() -> None:
