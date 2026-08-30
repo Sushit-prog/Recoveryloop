@@ -35,6 +35,7 @@ class Channel(str, Enum):
 
 ```python
 from datetime import date, datetime
+from decimal import Decimal
 from typing import Optional
 
 from pydantic import BaseModel, Field
@@ -43,7 +44,7 @@ from pydantic import BaseModel, Field
 class FailureEvent(BaseModel):
     case_id: str
     merchant_id: str
-    amount: float
+    amount: Decimal
     currency: str
     failure_code: FailureCode
     timestamp: datetime
@@ -87,13 +88,15 @@ class AuditRecord(BaseModel):
     gate_decision: GateDecision
     executed: bool
     execution_result: Optional[str] = None
+    notification_result: Optional[NotificationResult] = None
     timestamp: datetime
 ```
 
 ## Field-Contract Notes
 
-- **`amount`** is a `float` (or later `Decimal`) denominated in `currency`;
-  both must be present on every event.
+- **`amount`** is a `Decimal` denominated in `currency`; both must be present
+  on every event. amount uses Decimal, not float, to avoid rounding errors in
+  recovered-amount reporting.
 - **`retry_count`** is `>= 0`; exhaustion rules (e.g. "no more than N retry_now
   per case") are DecisionEngine policy, not schema constraints.
 - **`score`** is bounded `[0.0, 1.0]`; bounds are enforced by the validator.
@@ -103,5 +106,7 @@ class AuditRecord(BaseModel):
 - **`authorized=True`** is the ONLY state in which the Executor may act or the
   Notifier may send. Any `GateDecision` with `authorized=False` must never reach
   an execution path.
+- **`notification_result`** is populated only when the Notifier was actually
+  invoked — i.e. only on authorized, executed cases.
 - **`AuditRecord`** is immutable-by-convention: once written it is never
   mutated, only appended.

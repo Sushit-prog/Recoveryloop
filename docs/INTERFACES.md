@@ -49,7 +49,10 @@ only when the CapabilityGate returns `authorized=True`, and for reporting back
 the outcome. Its input is the full context: `FailureEvent`, `GateDecision`
 (`authorized` must be `True`), and the chosen `Diagnosis`; its output is an
 execution result string (or structured result) recorded on the `AuditRecord`.
-The Executor MUST NEVER act on a `GateDecision` where `authorized=False`, MUST
+On successful execution of an authorized action, the Executor invokes the
+Notifier to deliver the recovery message and includes the resulting
+NotificationResult in what it reports back for the AuditRecord. The Executor
+MUST NEVER act on a `GateDecision` where `authorized=False`, MUST
 NEVER invoke Notifier or any recovery effect for a denied case, and MUST NEVER
 decide policy — it only executes what the gate has approved.
 
