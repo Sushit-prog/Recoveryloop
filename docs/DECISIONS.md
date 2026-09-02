@@ -5,6 +5,20 @@ kept even though they disagree with the M1 dataset's hand-authored ground
 truth, plus the one case where the dataset was corrected instead. Entries
 state the disagreement, which side is right, and why.
 
+## 2026-09-02
+
+### 7. `NotificationResult.delivered` reflects "Razorpay told to auto-notify", not confirmed delivery
+
+M6's `RazorpayStatusNotifier` builds a delivery receipt by querying Razorpay's
+`GET /v1/payment_links/{id}`. That endpoint reports only payment status
+(`created` / `paid` / `expired` / `cancelled`) and has no notification-delivery
+field. So `delivered=True` means "the payment link was created and Razorpay was
+instructed to auto-notify the customer" — it is NOT an independent confirmation
+that the customer received the message. This limitation is documented on
+`RazorpayStatusNotifier.record()` and on the `NotificationResult` semantics;
+downstream consumers (M7 AuditLog, M9 API) must not treat `delivered=True` as
+proof of customer receipt.
+
 ## 2026-08-30
 
 ### 1. `unknown` failure_code → escalate (M3) vs no_action (M1 ground truth)
