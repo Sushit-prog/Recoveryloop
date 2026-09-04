@@ -13,10 +13,11 @@
     },
     "ground_truth": {
       "case_id": "C-001",
-      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_root_cause": "insufficient funds at time of charge",
       "expected_is_retryable": true,
       "expected_action": "escalate",
       "expected_authorized": true,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -39,6 +40,7 @@
       "expected_is_retryable": false,
       "expected_action": "escalate",
       "expected_authorized": true,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -57,10 +59,11 @@
     },
     "ground_truth": {
       "case_id": "C-003",
-      "expected_root_cause": "transaction exceeds the current card limit",
+      "expected_root_cause": "issuer-side transaction limit drop",
       "expected_is_retryable": true,
       "expected_action": "retry_later",
       "expected_authorized": true,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -79,10 +82,11 @@
     },
     "ground_truth": {
       "case_id": "C-004",
-      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_root_cause": "insufficient funds at time of charge",
       "expected_is_retryable": true,
       "expected_action": "no_action",
       "expected_authorized": false,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -101,10 +105,11 @@
     },
     "ground_truth": {
       "case_id": "C-005",
-      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_root_cause": "insufficient funds at time of charge",
       "expected_is_retryable": true,
       "expected_action": "retry_now",
       "expected_authorized": true,
+      "outcome": "paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -123,10 +128,11 @@
     },
     "ground_truth": {
       "case_id": "C-006",
-      "expected_root_cause": "failure code could not be classified",
+      "expected_root_cause": "failure code not recognized by the diagnosis engine",
       "expected_is_retryable": false,
       "expected_action": "no_action",
       "expected_authorized": false,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -145,10 +151,11 @@
     },
     "ground_truth": {
       "case_id": "C-007",
-      "expected_root_cause": "failure code could not be classified",
+      "expected_root_cause": "failure code not recognized by the diagnosis engine",
       "expected_is_retryable": false,
       "expected_action": "no_action",
       "expected_authorized": false,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -171,6 +178,7 @@
       "expected_is_retryable": false,
       "expected_action": "no_action",
       "expected_authorized": false,
+      "outcome": "not_paid",
       "is_adversarial": true,
       "adversarial_reason": "zero-amount case is not recoverable"
     }
@@ -189,10 +197,11 @@
     },
     "ground_truth": {
       "case_id": "C-009",
-      "expected_root_cause": "payment gateway raised a processing error",
+      "expected_root_cause": "payment gateway error",
       "expected_is_retryable": true,
       "expected_action": "no_action",
       "expected_authorized": false,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -215,6 +224,7 @@
       "expected_is_retryable": false,
       "expected_action": "escalate",
       "expected_authorized": true,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -233,10 +243,11 @@
     },
     "ground_truth": {
       "case_id": "C-011",
-      "expected_root_cause": "issuing bank did not respond within the window",
+      "expected_root_cause": "bank/network timeout during authorization",
       "expected_is_retryable": true,
       "expected_action": "retry_later",
       "expected_authorized": true,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -255,10 +266,11 @@
     },
     "ground_truth": {
       "case_id": "C-012",
-      "expected_root_cause": "issuing bank did not respond within the window",
+      "expected_root_cause": "bank/network timeout during authorization",
       "expected_is_retryable": true,
       "expected_action": "retry_later",
       "expected_authorized": true,
+      "outcome": "paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -281,6 +293,7 @@
       "expected_is_retryable": false,
       "expected_action": "no_action",
       "expected_authorized": false,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -299,10 +312,11 @@
     },
     "ground_truth": {
       "case_id": "C-014",
-      "expected_root_cause": "issuing bank did not respond within the window",
+      "expected_root_cause": "bank/network timeout during authorization",
       "expected_is_retryable": true,
       "expected_action": "retry_later",
       "expected_authorized": true,
+      "outcome": "paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -321,10 +335,11 @@
     },
     "ground_truth": {
       "case_id": "C-015",
-      "expected_root_cause": "failure code could not be classified",
+      "expected_root_cause": "failure code not recognized by the diagnosis engine",
       "expected_is_retryable": false,
       "expected_action": "no_action",
       "expected_authorized": false,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -347,6 +362,7 @@
       "expected_is_retryable": false,
       "expected_action": "escalate",
       "expected_authorized": true,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -369,6 +385,7 @@
       "expected_is_retryable": false,
       "expected_action": "escalate",
       "expected_authorized": true,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -387,10 +404,11 @@
     },
     "ground_truth": {
       "case_id": "C-018",
-      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_root_cause": "insufficient funds at time of charge",
       "expected_is_retryable": true,
       "expected_action": "retry_now",
       "expected_authorized": true,
+      "outcome": "paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -409,10 +427,11 @@
     },
     "ground_truth": {
       "case_id": "C-019",
-      "expected_root_cause": "transaction exceeds the current card limit",
+      "expected_root_cause": "issuer-side transaction limit drop",
       "expected_is_retryable": true,
       "expected_action": "retry_later",
       "expected_authorized": true,
+      "outcome": "paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -431,10 +450,11 @@
     },
     "ground_truth": {
       "case_id": "C-020",
-      "expected_root_cause": "issuing bank did not respond within the window",
+      "expected_root_cause": "bank/network timeout during authorization",
       "expected_is_retryable": true,
       "expected_action": "no_action",
       "expected_authorized": false,
+      "outcome": "not_paid",
       "is_adversarial": true,
       "adversarial_reason": "absurd retry count means the budget is blown; never retry again"
     }
@@ -453,10 +473,11 @@
     },
     "ground_truth": {
       "case_id": "C-021",
-      "expected_root_cause": "payment gateway raised a processing error",
+      "expected_root_cause": "payment gateway error",
       "expected_is_retryable": true,
       "expected_action": "retry_later",
       "expected_authorized": true,
+      "outcome": "paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -475,10 +496,11 @@
     },
     "ground_truth": {
       "case_id": "C-022",
-      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_root_cause": "insufficient funds at time of charge",
       "expected_is_retryable": true,
       "expected_action": "retry_now",
       "expected_authorized": true,
+      "outcome": "paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -497,10 +519,11 @@
     },
     "ground_truth": {
       "case_id": "C-023",
-      "expected_root_cause": "issuing bank did not respond within the window",
+      "expected_root_cause": "bank/network timeout during authorization",
       "expected_is_retryable": true,
       "expected_action": "no_action",
       "expected_authorized": false,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -523,6 +546,7 @@
       "expected_is_retryable": false,
       "expected_action": "escalate",
       "expected_authorized": true,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -541,10 +565,11 @@
     },
     "ground_truth": {
       "case_id": "C-025",
-      "expected_root_cause": "issuing bank did not respond within the window",
+      "expected_root_cause": "bank/network timeout during authorization",
       "expected_is_retryable": true,
       "expected_action": "retry_later",
       "expected_authorized": true,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -563,10 +588,11 @@
     },
     "ground_truth": {
       "case_id": "C-026",
-      "expected_root_cause": "payment gateway raised a processing error",
+      "expected_root_cause": "payment gateway error",
       "expected_is_retryable": true,
       "expected_action": "retry_later",
       "expected_authorized": true,
+      "outcome": "paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -589,6 +615,7 @@
       "expected_is_retryable": false,
       "expected_action": "escalate",
       "expected_authorized": true,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -611,6 +638,7 @@
       "expected_is_retryable": false,
       "expected_action": "escalate",
       "expected_authorized": true,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -629,10 +657,11 @@
     },
     "ground_truth": {
       "case_id": "C-029",
-      "expected_root_cause": "transaction exceeds the current card limit",
+      "expected_root_cause": "issuer-side transaction limit drop",
       "expected_is_retryable": true,
       "expected_action": "retry_later",
       "expected_authorized": true,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -651,10 +680,11 @@
     },
     "ground_truth": {
       "case_id": "C-030",
-      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_root_cause": "insufficient funds at time of charge",
       "expected_is_retryable": true,
       "expected_action": "escalate",
       "expected_authorized": true,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -673,10 +703,11 @@
     },
     "ground_truth": {
       "case_id": "C-031",
-      "expected_root_cause": "failure code could not be classified",
+      "expected_root_cause": "failure code not recognized by the diagnosis engine",
       "expected_is_retryable": false,
       "expected_action": "no_action",
       "expected_authorized": false,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -695,10 +726,11 @@
     },
     "ground_truth": {
       "case_id": "C-032",
-      "expected_root_cause": "failure code could not be classified",
+      "expected_root_cause": "failure code not recognized by the diagnosis engine",
       "expected_is_retryable": false,
       "expected_action": "no_action",
       "expected_authorized": false,
+      "outcome": "not_paid",
       "is_adversarial": true,
       "adversarial_reason": "unknown failure code compounded by exhausted retries"
     }
@@ -717,10 +749,11 @@
     },
     "ground_truth": {
       "case_id": "C-033",
-      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_root_cause": "insufficient funds at time of charge",
       "expected_is_retryable": true,
       "expected_action": "retry_now",
       "expected_authorized": true,
+      "outcome": "paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -739,10 +772,11 @@
     },
     "ground_truth": {
       "case_id": "C-034",
-      "expected_root_cause": "transaction exceeds the current card limit",
+      "expected_root_cause": "issuer-side transaction limit drop",
       "expected_is_retryable": true,
       "expected_action": "no_action",
       "expected_authorized": false,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -761,10 +795,11 @@
     },
     "ground_truth": {
       "case_id": "C-035",
-      "expected_root_cause": "failure code could not be classified",
+      "expected_root_cause": "failure code not recognized by the diagnosis engine",
       "expected_is_retryable": false,
       "expected_action": "no_action",
       "expected_authorized": false,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -783,10 +818,11 @@
     },
     "ground_truth": {
       "case_id": "C-036",
-      "expected_root_cause": "payment gateway raised a processing error",
+      "expected_root_cause": "payment gateway error",
       "expected_is_retryable": true,
       "expected_action": "retry_later",
       "expected_authorized": true,
+      "outcome": "paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -805,10 +841,11 @@
     },
     "ground_truth": {
       "case_id": "C-037",
-      "expected_root_cause": "issuing bank did not respond within the window",
+      "expected_root_cause": "bank/network timeout during authorization",
       "expected_is_retryable": true,
       "expected_action": "retry_later",
       "expected_authorized": true,
+      "outcome": "paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -827,10 +864,11 @@
     },
     "ground_truth": {
       "case_id": "C-038",
-      "expected_root_cause": "transaction exceeds the current card limit",
+      "expected_root_cause": "issuer-side transaction limit drop",
       "expected_is_retryable": true,
       "expected_action": "escalate",
       "expected_authorized": true,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -849,10 +887,11 @@
     },
     "ground_truth": {
       "case_id": "C-039",
-      "expected_root_cause": "payment gateway raised a processing error",
+      "expected_root_cause": "payment gateway error",
       "expected_is_retryable": true,
       "expected_action": "no_action",
       "expected_authorized": false,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -875,6 +914,7 @@
       "expected_is_retryable": false,
       "expected_action": "escalate",
       "expected_authorized": true,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -893,10 +933,11 @@
     },
     "ground_truth": {
       "case_id": "C-041",
-      "expected_root_cause": "failure code could not be classified",
+      "expected_root_cause": "failure code not recognized by the diagnosis engine",
       "expected_is_retryable": false,
       "expected_action": "no_action",
       "expected_authorized": false,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -915,10 +956,11 @@
     },
     "ground_truth": {
       "case_id": "C-042",
-      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_root_cause": "insufficient funds at time of charge",
       "expected_is_retryable": true,
       "expected_action": "escalate",
       "expected_authorized": true,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -941,6 +983,7 @@
       "expected_is_retryable": false,
       "expected_action": "escalate",
       "expected_authorized": true,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -959,10 +1002,11 @@
     },
     "ground_truth": {
       "case_id": "C-044",
-      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_root_cause": "insufficient funds at time of charge",
       "expected_is_retryable": true,
       "expected_action": "retry_later",
       "expected_authorized": true,
+      "outcome": "paid",
       "is_adversarial": true,
       "adversarial_reason": "active PTP without a date is ambiguous; do not assume it blocks recovery"
     }
@@ -981,10 +1025,11 @@
     },
     "ground_truth": {
       "case_id": "C-045",
-      "expected_root_cause": "payment gateway raised a processing error",
+      "expected_root_cause": "payment gateway error",
       "expected_is_retryable": true,
       "expected_action": "no_action",
       "expected_authorized": false,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -1003,10 +1048,11 @@
     },
     "ground_truth": {
       "case_id": "C-046",
-      "expected_root_cause": "issuing bank did not respond within the window",
+      "expected_root_cause": "bank/network timeout during authorization",
       "expected_is_retryable": true,
       "expected_action": "retry_later",
       "expected_authorized": true,
+      "outcome": "paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -1029,6 +1075,7 @@
       "expected_is_retryable": false,
       "expected_action": "escalate",
       "expected_authorized": true,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -1047,10 +1094,11 @@
     },
     "ground_truth": {
       "case_id": "C-048",
-      "expected_root_cause": "transaction exceeds the current card limit",
+      "expected_root_cause": "issuer-side transaction limit drop",
       "expected_is_retryable": true,
       "expected_action": "retry_later",
       "expected_authorized": true,
+      "outcome": "paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -1069,10 +1117,11 @@
     },
     "ground_truth": {
       "case_id": "C-049",
-      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_root_cause": "insufficient funds at time of charge",
       "expected_is_retryable": true,
       "expected_action": "retry_now",
       "expected_authorized": true,
+      "outcome": "not_paid",
       "is_adversarial": true,
       "adversarial_reason": "stale promise-to-pay date should not block recovery"
     }
@@ -1091,10 +1140,11 @@
     },
     "ground_truth": {
       "case_id": "C-050",
-      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_root_cause": "insufficient funds at time of charge",
       "expected_is_retryable": true,
       "expected_action": "retry_now",
       "expected_authorized": true,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -1113,10 +1163,11 @@
     },
     "ground_truth": {
       "case_id": "C-051",
-      "expected_root_cause": "issuing bank did not respond within the window",
+      "expected_root_cause": "bank/network timeout during authorization",
       "expected_is_retryable": true,
       "expected_action": "retry_later",
       "expected_authorized": true,
+      "outcome": "paid",
       "is_adversarial": true,
       "adversarial_reason": "stale promise-to-pay date should not block recovery"
     }
@@ -1135,10 +1186,11 @@
     },
     "ground_truth": {
       "case_id": "C-052",
-      "expected_root_cause": "issuing bank did not respond within the window",
+      "expected_root_cause": "bank/network timeout during authorization",
       "expected_is_retryable": true,
       "expected_action": "retry_later",
       "expected_authorized": true,
+      "outcome": "paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -1157,10 +1209,11 @@
     },
     "ground_truth": {
       "case_id": "C-053",
-      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_root_cause": "insufficient funds at time of charge",
       "expected_is_retryable": true,
       "expected_action": "retry_now",
       "expected_authorized": true,
+      "outcome": "paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -1179,10 +1232,11 @@
     },
     "ground_truth": {
       "case_id": "C-054",
-      "expected_root_cause": "transaction exceeds the current card limit",
+      "expected_root_cause": "issuer-side transaction limit drop",
       "expected_is_retryable": true,
       "expected_action": "escalate",
       "expected_authorized": true,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -1201,10 +1255,11 @@
     },
     "ground_truth": {
       "case_id": "C-055",
-      "expected_root_cause": "issuing bank did not respond within the window",
+      "expected_root_cause": "bank/network timeout during authorization",
       "expected_is_retryable": true,
       "expected_action": "retry_later",
       "expected_authorized": true,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -1223,10 +1278,11 @@
     },
     "ground_truth": {
       "case_id": "C-056",
-      "expected_root_cause": "customer lacks funds for the payment",
+      "expected_root_cause": "insufficient funds at time of charge",
       "expected_is_retryable": true,
       "expected_action": "escalate",
       "expected_authorized": true,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -1245,10 +1301,11 @@
     },
     "ground_truth": {
       "case_id": "C-057",
-      "expected_root_cause": "transaction exceeds the current card limit",
+      "expected_root_cause": "issuer-side transaction limit drop",
       "expected_is_retryable": true,
       "expected_action": "retry_later",
       "expected_authorized": true,
+      "outcome": "paid",
       "is_adversarial": true,
       "adversarial_reason": "stale promise-to-pay date should not block recovery"
     }
@@ -1271,6 +1328,7 @@
       "expected_is_retryable": false,
       "expected_action": "escalate",
       "expected_authorized": true,
+      "outcome": "not_paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -1289,10 +1347,11 @@
     },
     "ground_truth": {
       "case_id": "C-059",
-      "expected_root_cause": "payment gateway raised a processing error",
+      "expected_root_cause": "payment gateway error",
       "expected_is_retryable": true,
       "expected_action": "retry_later",
       "expected_authorized": true,
+      "outcome": "paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }
@@ -1311,10 +1370,11 @@
     },
     "ground_truth": {
       "case_id": "C-060",
-      "expected_root_cause": "issuing bank did not respond within the window",
+      "expected_root_cause": "bank/network timeout during authorization",
       "expected_is_retryable": true,
       "expected_action": "retry_later",
       "expected_authorized": true,
+      "outcome": "paid",
       "is_adversarial": false,
       "adversarial_reason": null
     }

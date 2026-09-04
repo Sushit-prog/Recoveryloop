@@ -20,3 +20,8 @@ htmlcov/
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Runtime artifacts
+data/audit.db
+data/audit.db-wal
+data/audit.db-shm

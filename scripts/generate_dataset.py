@@ -64,12 +64,12 @@ NORMAL_BUCKETS = {
 }
 
 ROOT_CAUSES = {
-    FailureCode.insufficient_funds: "customer lacks funds for the payment",
+    FailureCode.insufficient_funds: "insufficient funds at time of charge",
     FailureCode.expired_card: "card expired before charge was attempted",
-    FailureCode.bank_timeout: "issuing bank did not respond within the window",
-    FailureCode.limit_drop: "transaction exceeds the current card limit",
-    FailureCode.gateway_error: "payment gateway raised a processing error",
-    FailureCode.unknown: "failure code could not be classified",
+    FailureCode.bank_timeout: "bank/network timeout during authorization",
+    FailureCode.limit_drop: "issuer-side transaction limit drop",
+    FailureCode.gateway_error: "payment gateway error",
+    FailureCode.unknown: "failure code not recognized by the diagnosis engine",
 }
 
 IS_RETRYABLE = {
@@ -256,6 +256,15 @@ def build_dataset(rng: random.Random) -> list[dict]:
             expected_is_retryable=is_retryable,
             expected_action=action,
             expected_authorized=action != ActionType.no_action,
+            # Target ~80% conversion -- an assumed illustrative rate, not
+            # derived from real Razorpay data.  Drawn per-case from a
+            # case_id-seeded RNG independent of the shared dataset RNG so the
+            # flip only changes the outcome field; amounts/timestamps/merchants
+            # are untouched.  Realized rate on this seed is 20/27 = ~74%.
+            outcome="paid"
+            if action in (ActionType.retry_now, ActionType.retry_later)
+            and random.Random(f"outcome:{case_id}").random() < 0.80
+            else "not_paid",
             is_adversarial=i in SPECIALS,
             adversarial_reason=adversarial_reason,
         )

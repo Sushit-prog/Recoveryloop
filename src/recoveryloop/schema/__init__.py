@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import date, datetime
 from decimal import Decimal
 from enum import Enum
-from typing import Optional
+from typing import Literal, Optional
 
 from pydantic import BaseModel, Field
 
@@ -70,6 +70,7 @@ class NotificationResult(BaseModel):
 
 
 class AuditRecord(BaseModel):
+    event: FailureEvent
     case_id: str
     diagnosis: Diagnosis
     candidates: list[CandidateAction]
@@ -78,6 +79,7 @@ class AuditRecord(BaseModel):
     execution_result: Optional[str] = None
     notification_result: Optional[NotificationResult] = None
     timestamp: datetime
+    pipeline_version: str = "0.0.1"
 
 
 class GroundTruthLabel(BaseModel):
@@ -93,5 +95,6 @@ class GroundTruthLabel(BaseModel):
     expected_is_retryable: bool
     expected_action: ActionType
     expected_authorized: bool
+    outcome: Literal["paid", "not_paid"] = "not_paid"
     is_adversarial: bool = False
     adversarial_reason: Optional[str] = None
