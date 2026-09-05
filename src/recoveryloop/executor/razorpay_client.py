@@ -46,13 +46,24 @@ class RazorpayPaymentLinkClient:
         }
 
         if notify is not None:
+            # Razorpay's API wants notify.email/sms as BOOLEAN flags telling it
+            # to send the notification; the recipient's contact details go in
+            # a separate `customer` object. Sending the address in notify.email
+            # is rejected with HTTP 400 ("notify:email must be boolean").
             notify_payload: dict = {}
+            customer_payload: dict = {}
             if notify.email is not None:
-                notify_payload["email"] = notify.email
+                notify_payload["email"] = True
+                customer_payload["email"] = notify.email
             if notify.phone is not None:
-                notify_payload["sms"] = notify.phone
+                notify_payload["sms"] = True
+                customer_payload["contact"] = notify.phone
+            if notify.name is not None:
+                customer_payload["name"] = notify.name
             if notify_payload:
                 body["notify"] = notify_payload
+            if customer_payload:
+                body["customer"] = customer_payload
 
         if callback_url is not None:
             body["callback_url"] = callback_url

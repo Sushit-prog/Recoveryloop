@@ -221,11 +221,70 @@ def test_live_client_method_url_auth_body() -> None:
     assert loaded["amount"] == 15000
     assert loaded["currency"] == "INR"
     assert loaded["reference_id"] == "CASE-7"
-    assert loaded["notify"]["email"] == "x@y.com"
+    assert loaded["notify"]["email"] is True
+    assert loaded["customer"]["email"] == "x@y.com"
 
     assert outcome.status == "created"
     assert outcome.link_id == "plink_test123"
     assert outcome.short_url == "https://rzp.io/i/test"
+
+
+def test_live_client_notify_email_is_boolean_customer_carries_address() -> None:
+    transport = _FakeTransport(status=200, body={"id": "pl", "short_url": "u"})
+    client = RazorpayPaymentLinkClient()
+    client._http = httpx.Client(transport=transport)
+
+    outcome = client.create_payment_link(
+        amount=Decimal("150.00"),
+        currency="INR",
+        reference_id="CASE-9",
+        notify=CustomerContact(email="buyer@example.com"),
+    )
+
+    req = transport.last_request
+    assert req is not None
+    loaded = json.loads(req.content)
+    assert loaded["notify"] == {"email": True}
+    assert loaded["customer"] == {"email": "buyer@example.com"}
+    assert outcome.status == "created"
+
+
+def test_live_client_notify_phone_and_name_shape() -> None:
+    transport = _FakeTransport(status=200, body={"id": "pl", "short_url": "u"})
+    client = RazorpayPaymentLinkClient()
+    client._http = httpx.Client(transport=transport)
+
+    client.create_payment_link(
+        amount=Decimal("99.00"),
+        currency="INR",
+        reference_id="CASE-10",
+        notify=CustomerContact(name="A Customer", phone="+911234567890"),
+    )
+
+    req = transport.last_request
+    assert req is not None
+    loaded = json.loads(req.content)
+    assert loaded["notify"] == {"sms": True}
+    assert loaded["customer"] == {
+        "name": "A Customer",
+        "contact": "+911234567890",
+    }
+
+
+def test_live_client_no_notify_sends_no_notify_or_customer() -> None:
+    transport = _FakeTransport(status=200, body={"id": "pl", "short_url": "u"})
+    client = RazorpayPaymentLinkClient()
+    client._http = httpx.Client(transport=transport)
+
+    client.create_payment_link(
+        amount=Decimal("50.00"), currency="INR", reference_id="CASE-11"
+    )
+
+    req = transport.last_request
+    assert req is not None
+    loaded = json.loads(req.content)
+    assert "notify" not in loaded
+    assert "customer" not in loaded
 
 
 def test_live_client_500_error_returns_failed() -> None:

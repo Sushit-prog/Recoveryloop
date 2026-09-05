@@ -25,3 +25,10 @@ Thumbs.db
 data/audit.db
 data/audit.db-wal
 data/audit.db-shm
+data/live_demo_audit.db
+data/live_demo_audit.db-wal
+data/live_demo_audit.db-shm
+
+# Live demo credentials (never commit)
+rzp-test-key.csv
+.env
