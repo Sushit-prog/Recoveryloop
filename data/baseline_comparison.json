@@ -1,0 +1,1191 @@
+{
+  "dataset": "C:\\Users\\pakra\\Desktop\\codingProjects\\RecoveryLoop\\data\\synthetic_batch.json",
+  "n_cases": 60,
+  "capability_gate_note": "diagnosis_only bypasses the CapabilityGate entirely (pipeline.authorize is swapped for an always-authorized verdict), so its retryable decisions execute unconditionally. Every other row runs Detect -> Diagnose -> Decide -> Gate -> Execute -> Audit.",
+  "runs": [
+    {
+      "policy": "decision_engine",
+      "capability_gate": true,
+      "total_cases": 60,
+      "correct_diagnosis_pct": 98.3,
+      "correct_decision_pct": 51.7,
+      "precision": 0.7647,
+      "recall": 0.963,
+      "recovery_rate_pct": 78.6,
+      "total_at_risk": 1106584.23,
+      "attempted_amount": 907584.23,
+      "recovered_amount": 869946.0,
+      "divergences": 30,
+      "exceptions": [
+        {
+          "case_id": "C-001",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "retry_later",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-005",
+          "field": "decision",
+          "expected": "retry_now",
+          "actual": "retry_later",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-006",
+          "field": "decision",
+          "expected": "no_action",
+          "actual": "escalate",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-007",
+          "field": "decision",
+          "expected": "no_action",
+          "actual": "escalate",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-008",
+          "field": "diagnosis",
+          "expected": "zero-amount transaction; nothing to recover",
+          "actual": "insufficient funds at time of charge; zero-amount, nothing to recover",
+          "reason": "root cause mismatch"
+        },
+        {
+          "case_id": "C-009",
+          "field": "decision",
+          "expected": "no_action",
+          "actual": "retry_later",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-014",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-015",
+          "field": "decision",
+          "expected": "no_action",
+          "actual": "escalate",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-020",
+          "field": "decision",
+          "expected": "no_action",
+          "actual": "escalate",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-022",
+          "field": "decision",
+          "expected": "retry_now",
+          "actual": "retry_later",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-025",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-026",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-030",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "retry_later",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-031",
+          "field": "decision",
+          "expected": "no_action",
+          "actual": "escalate",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-032",
+          "field": "decision",
+          "expected": "no_action",
+          "actual": "escalate",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-033",
+          "field": "decision",
+          "expected": "retry_now",
+          "actual": "retry_later",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-035",
+          "field": "decision",
+          "expected": "no_action",
+          "actual": "escalate",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-036",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-038",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "retry_later",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-039",
+          "field": "decision",
+          "expected": "no_action",
+          "actual": "retry_later",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-041",
+          "field": "decision",
+          "expected": "no_action",
+          "actual": "escalate",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-042",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "retry_later",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-044",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-046",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-051",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-053",
+          "field": "decision",
+          "expected": "retry_now",
+          "actual": "retry_later",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-054",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "retry_later",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-056",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "retry_later",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-057",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-060",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        }
+      ]
+    },
+    {
+      "policy": "always_retry",
+      "capability_gate": true,
+      "total_cases": 60,
+      "correct_diagnosis_pct": 98.3,
+      "correct_decision_pct": 28.3,
+      "precision": 0.75,
+      "recall": 0.6667,
+      "recovery_rate_pct": 55.5,
+      "total_at_risk": 1106584.23,
+      "attempted_amount": 649087.48,
+      "recovered_amount": 613950.0,
+      "divergences": 44,
+      "exceptions": [
+        {
+          "case_id": "C-001",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-002",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-003",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-004",
+          "field": "decision",
+          "expected": "no_action",
+          "actual": "retry_now",
+          "reason": "valid promise-to-pay in effect on 2026-09-01; customer-facing or retry action blocked"
+        },
+        {
+          "case_id": "C-008",
+          "field": "diagnosis",
+          "expected": "zero-amount transaction; nothing to recover",
+          "actual": "insufficient funds at time of charge; zero-amount, nothing to recover",
+          "reason": "root cause mismatch"
+        },
+        {
+          "case_id": "C-009",
+          "field": "decision",
+          "expected": "no_action",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-010",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-011",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "quiet hours: event hour 1 UTC is within 22:00-07:00"
+        },
+        {
+          "case_id": "C-012",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-014",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-016",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-017",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-019",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "quiet hours: event hour 5 UTC is within 22:00-07:00"
+        },
+        {
+          "case_id": "C-021",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "quiet hours: event hour 5 UTC is within 22:00-07:00"
+        },
+        {
+          "case_id": "C-023",
+          "field": "decision",
+          "expected": "no_action",
+          "actual": "retry_now",
+          "reason": "valid promise-to-pay in effect on 2026-09-05; customer-facing or retry action blocked"
+        },
+        {
+          "case_id": "C-024",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-025",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-026",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-027",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-028",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-029",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-030",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-034",
+          "field": "decision",
+          "expected": "no_action",
+          "actual": "retry_now",
+          "reason": "valid promise-to-pay in effect on 2026-09-04; customer-facing or retry action blocked"
+        },
+        {
+          "case_id": "C-036",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-037",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "quiet hours: event hour 4 UTC is within 22:00-07:00"
+        },
+        {
+          "case_id": "C-038",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-039",
+          "field": "decision",
+          "expected": "no_action",
+          "actual": "retry_now",
+          "reason": "quiet hours: event hour 2 UTC is within 22:00-07:00"
+        },
+        {
+          "case_id": "C-040",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-042",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "retry_now",
+          "reason": "quiet hours: event hour 22 UTC is within 22:00-07:00"
+        },
+        {
+          "case_id": "C-043",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-044",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-045",
+          "field": "decision",
+          "expected": "no_action",
+          "actual": "retry_now",
+          "reason": "valid promise-to-pay in effect on 2026-09-04; customer-facing or retry action blocked"
+        },
+        {
+          "case_id": "C-046",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-047",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-048",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "quiet hours: event hour 3 UTC is within 22:00-07:00"
+        },
+        {
+          "case_id": "C-051",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "valid promise-to-pay in effect on 2026-08-27; customer-facing or retry action blocked"
+        },
+        {
+          "case_id": "C-052",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "quiet hours: event hour 1 UTC is within 22:00-07:00"
+        },
+        {
+          "case_id": "C-054",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-055",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-056",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-057",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-058",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-059",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-060",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        }
+      ]
+    },
+    {
+      "policy": "threshold",
+      "capability_gate": true,
+      "total_cases": 60,
+      "correct_diagnosis_pct": 98.3,
+      "correct_decision_pct": 31.7,
+      "precision": 0.8,
+      "recall": 0.4444,
+      "recovery_rate_pct": 2.0,
+      "total_at_risk": 1106584.23,
+      "attempted_amount": 32086.48,
+      "recovered_amount": 21949.5,
+      "divergences": 42,
+      "exceptions": [
+        {
+          "case_id": "C-001",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-002",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-003",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-005",
+          "field": "decision",
+          "expected": "retry_now",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-008",
+          "field": "diagnosis",
+          "expected": "zero-amount transaction; nothing to recover",
+          "actual": "insufficient funds at time of charge; zero-amount, nothing to recover",
+          "reason": "root cause mismatch"
+        },
+        {
+          "case_id": "C-010",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-011",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "quiet hours: event hour 1 UTC is within 22:00-07:00"
+        },
+        {
+          "case_id": "C-012",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-014",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-016",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-017",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-019",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-021",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-022",
+          "field": "decision",
+          "expected": "retry_now",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-023",
+          "field": "decision",
+          "expected": "no_action",
+          "actual": "retry_now",
+          "reason": "valid promise-to-pay in effect on 2026-09-05; customer-facing or retry action blocked"
+        },
+        {
+          "case_id": "C-024",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-025",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-026",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-027",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-028",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-029",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-030",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-036",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-037",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "quiet hours: event hour 4 UTC is within 22:00-07:00"
+        },
+        {
+          "case_id": "C-038",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-040",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-042",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "retry_now",
+          "reason": "quiet hours: event hour 22 UTC is within 22:00-07:00"
+        },
+        {
+          "case_id": "C-043",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-044",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-045",
+          "field": "decision",
+          "expected": "no_action",
+          "actual": "retry_now",
+          "reason": "valid promise-to-pay in effect on 2026-09-04; customer-facing or retry action blocked"
+        },
+        {
+          "case_id": "C-046",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-047",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-048",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "quiet hours: event hour 3 UTC is within 22:00-07:00"
+        },
+        {
+          "case_id": "C-051",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-052",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "quiet hours: event hour 1 UTC is within 22:00-07:00"
+        },
+        {
+          "case_id": "C-054",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-055",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-056",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-057",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-058",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-059",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-060",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        }
+      ]
+    },
+    {
+      "policy": "diagnosis_only",
+      "capability_gate": false,
+      "total_cases": 60,
+      "correct_diagnosis_pct": 98.3,
+      "correct_decision_pct": 28.3,
+      "precision": 0.6923,
+      "recall": 1.0,
+      "recovery_rate_pct": 96.6,
+      "total_at_risk": 1106584.23,
+      "attempted_amount": 1106584.23,
+      "recovered_amount": 1068946.0,
+      "divergences": 44,
+      "exceptions": [
+        {
+          "case_id": "C-001",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-002",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-003",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-004",
+          "field": "decision",
+          "expected": "no_action",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-008",
+          "field": "diagnosis",
+          "expected": "zero-amount transaction; nothing to recover",
+          "actual": "insufficient funds at time of charge; zero-amount, nothing to recover",
+          "reason": "root cause mismatch"
+        },
+        {
+          "case_id": "C-009",
+          "field": "decision",
+          "expected": "no_action",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-010",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-011",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-012",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-014",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-016",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-017",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-019",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-021",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-023",
+          "field": "decision",
+          "expected": "no_action",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-024",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-025",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-026",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-027",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-028",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-029",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-030",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-034",
+          "field": "decision",
+          "expected": "no_action",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-036",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-037",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-038",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-039",
+          "field": "decision",
+          "expected": "no_action",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-040",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-042",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-043",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-044",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-045",
+          "field": "decision",
+          "expected": "no_action",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-046",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-047",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-048",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-051",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-052",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-054",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-055",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-056",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-057",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-058",
+          "field": "decision",
+          "expected": "escalate",
+          "actual": "no_action",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-059",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        },
+        {
+          "case_id": "C-060",
+          "field": "decision",
+          "expected": "retry_later",
+          "actual": "retry_now",
+          "reason": "action type mismatch"
+        }
+      ]
+    }
+  ]
+}

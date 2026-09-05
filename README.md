@@ -50,6 +50,10 @@ Attempted vs. recovered is separated deliberately. Executing an action — creat
 
 The 30 divergences are the honesty mechanism, and they exist precisely so this eval is not "60/60 passed." Of those, 29 are decision-level and documented one-by-one in `docs/DECISIONS.md` as deliberate engine choices against the synthetic ground truth — places where the engine's policy (escalate an unknown cause, back off at 1–2 retries, keep the overnight escalation path) is the defended answer, with the reasoning on record. The remaining divergence is a diagnosis wording artifact on the zero-amount adversarial case (C-008). Every one of the 30 is emitted into the eval report's exception list; none is swept into an aggregate.
 
+## Appendix: baseline comparison
+
+A supplementary ablation comparison of naive baseline decision policies against the full DecisionEngine, run through the same eval harness, is documented in docs/BASELINES.md. It is appendix material only and does not change the evaluation numbers above.
+
 ## Running it
 
 Requires Python ≥ 3.11.
